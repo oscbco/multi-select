@@ -1,0 +1,30 @@
+.select {
+  position: relative;
+  background: lightgreen;
+  display: inline-block;
+}
+
+.select * {
+  cursor: default;
+}
+
+.select input {
+  cursor: auto;
+}
+
+.item-container {
+  background: lightblue;
+  overflow: hidden;
+  height: 0;
+  transition: height 0.2s ease;
+}
+
+.item-list {
+  background: lightcoral;
+}
+
+.down-arrow {
+  justify-self: right;
+  align-self: center;
+  width: 1.6em;
+}
