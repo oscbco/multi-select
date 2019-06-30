@@ -1,14 +1,16 @@
 import React, { useState, useRef } from 'react';
+
 import { DownArrow } from './Shapes';
-import css from './_MultiSelect.scss';
 import toTitleCase from './titleCase';
 
+import css from './_MultiSelect.scss';
+
 export default function MultiSelect (props) {
-  const [isOpen, open] = useState(false);
   const itemListRef = useRef(null);
   const height = useRef();
+  const [active] = useState(-1);
+  const [isOpen, open] = useState(false);
   const [selected, setSelected] = useState([]);
-  const [active, setActive] = useState(-1);
   const [focused, setFocused] = useState(false);
 
   const openSelect = () => {
@@ -30,8 +32,6 @@ export default function MultiSelect (props) {
       } else {
         setSelected([...selected.slice(0, indexOf), ...selected.slice(indexOf + 1)]);
       }
-      // setActive(value);
-      // open(false);
     }
   };
 
@@ -52,20 +52,18 @@ export default function MultiSelect (props) {
     });
     const label = item.label ? item.label : toTitleCase(item.value);
     return (
-      <div className={css.selectedItem} key={item.value}>
+      <div className={css.selectedItem} key={item.value} style={props.selectedItemStyle}>
         {label}
-        <span data-value={item.value}>
-          ❌
-        </span>
+        <span className={css.removeButton} data-value={item.value}>×</span>
       </div>
     );
   });
 
   return (
-    <div tabIndex={-1} className={css.select} onFocus={() => setFocused(true)} onBlur={() => handleBlur(false)} onClick={selectItem} style={{ width: props.width, zIndex: (focused ? '9999' : '1') }}>
-      <div className={css.header}>
+    <div tabIndex={-1} className={css.select} onFocus={() => setFocused(true)} onBlur={() => handleBlur(false)} onClick={selectItem} style={{ width: props.width, zIndex: (focused ? '9999' : '1'), ...props.style }}>
+      <div className={css.header} style={props.headerStyle}>
         <div>
-          {selectedItems}
+          {selectedItems}<div className={css.selectedItem} style={{ visibility: 'hidden', maxWidth: '0', ...props.selectedItemStyle }}>&nbsp;</div>
           <input type='text' onChange={(e) => { props.onFilterChange(e.target.value); }} />
         </div>
         <div onClick={openSelect}>
@@ -73,7 +71,7 @@ export default function MultiSelect (props) {
         </div>
       </div>
       <div className={css.itemContainer} style={{ height: (isOpen === true ? height.current : '0') }}>
-        <div className={css.itemList} ref={itemListRef}>
+        <div className={css.itemList} ref={itemListRef} style={props.listStyle}>
           {items}
         </div>
       </div>
@@ -83,5 +81,9 @@ export default function MultiSelect (props) {
 
 MultiSelect.defaultProps = {
   onFilterChange: () => {},
-  width: 'auto'
+  width: 'auto',
+  style: {},
+  listStyle: {},
+  headerStyle: {},
+  selectedItemStyle: {}
 };
