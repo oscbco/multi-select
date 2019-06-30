@@ -10,6 +10,7 @@
 
 .select input {
   cursor: auto;
+  width: 100%;
 }
 
 .item-container {
@@ -17,6 +18,9 @@
   overflow: hidden;
   height: 0;
   transition: height 0.2s ease;
+  position: absolute;
+  left: 0;
+  right: 0;
 }
 
 .item-list {
@@ -27,4 +31,36 @@
   justify-self: right;
   align-self: center;
   width: 1.6em;
+}
+
+.selected-item {
+  background: lightblue;
+  display: inline-block;
+  margin-right: 10px;
+  border-radius: 5px;
+  padding: 2px 3px;
+  margin-bottom: 4px;
+}
+
+.selected-item > * {
+  vertical-align: middle;
+}
+
+.selected-item > span {
+  font-size: smaller;
+  font-weight: lighter;
+  color: gray;
+  padding: 5px 7px;
+}
+
+.header {
+  display: flex;
+}
+
+.header > div:nth-child(2) {
+  flex-grow: 0;
+}
+
+.header > div:nth-child(1) {
+  flex-grow: 1;
 }

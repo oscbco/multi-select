@@ -9,10 +9,16 @@ export default function MultiSelect (props) {
   const height = useRef();
   const [selected, setSelected] = useState([]);
   const [active, setActive] = useState(-1);
+  const [focused, setFocused] = useState(false);
 
   const openSelect = () => {
     open(!isOpen);
     height.current = itemListRef.current.offsetHeight;
+  };
+
+  const handleBlur = () => {
+    setFocused(false);
+    open(false);
   };
 
   const selectItem = (event) => {
@@ -40,19 +46,42 @@ export default function MultiSelect (props) {
     );
   });
 
+  const selectedItems = selected.map(function (itemValue, index) {
+    const item = props.items.find((elem) => {
+      return elem.value === itemValue;
+    });
+    const label = item.label ? item.label : toTitleCase(item.value);
+    return (
+      <div className={css.selectedItem} key={item.value}>
+        {label}
+        <span data-value={item.value}>
+          ❌
+        </span>
+      </div>
+    );
+  });
+
   return (
-    <div>
-      <div className={css.select} >
-        {JSON.stringify(selected, null, 2)}
-        <br />
-        <input type='text' />
-        <DownArrow className={css.downArrow} handleClick={openSelect} />
-        <div className={css.itemContainer} style={{ height: (isOpen === true ? height.current : '0') }}>
-          <div className={css.itemList} ref={itemListRef} onClick={selectItem}>
-            {items}
-          </div>
+    <div tabIndex={-1} className={css.select} onFocus={() => setFocused(true)} onBlur={() => handleBlur(false)} onClick={selectItem} style={{ width: props.width, zIndex: (focused ? '9999' : '1') }}>
+      <div className={css.header}>
+        <div>
+          {selectedItems}
+          <input type='text' onChange={(e) => { props.onFilterChange(e.target.value); }} />
+        </div>
+        <div onClick={openSelect}>
+          <DownArrow className={css.downArrow} />
+        </div>
+      </div>
+      <div className={css.itemContainer} style={{ height: (isOpen === true ? height.current : '0') }}>
+        <div className={css.itemList} ref={itemListRef}>
+          {items}
         </div>
       </div>
     </div>
   );
 }
+
+MultiSelect.defaultProps = {
+  onFilterChange: () => {},
+  width: 'auto'
+};
