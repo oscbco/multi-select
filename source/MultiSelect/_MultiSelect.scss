@@ -7,7 +7,8 @@
   display: inline-block;
   outline: none;
   border-radius: 3px;
-  padding: 5px;
+  padding: 4px;
+  background: white;
 }
 
 .select:focus {
@@ -38,8 +39,9 @@
 .down-arrow {
   justify-self: right;
   align-self: center;
-  width: 1.6em;
+  width: 1.1em;
   padding: 3px;
+  vertical-align: middle;
 }
 
 /*
@@ -49,13 +51,9 @@
  .selected-item {
   display: inline-block;
   margin-right: 10px;
-  border-radius: 5px;
+  border-radius: 3.5px;
   padding: 2px 3px 2px 5px;
-  margin-bottom: 4px;
-}
-
-.selected-item > * {
-  vertical-align: middle;
+  margin: 2px;
 }
 
 .cmd-remove-item {
@@ -72,6 +70,7 @@
   width: 100%;
   border-radius: 3px;
   border: 1px solid #888;
+  font: inherit;
 }
 
 
