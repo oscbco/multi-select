@@ -8,19 +8,37 @@ import css from './_MultiSelect.scss';
 export default function MultiSelect (props) {
   const itemListRef = useRef(null);
   const height = useRef();
+  const txtRef = useRef();
   const [active] = useState(-1);
   const [isOpen, open] = useState(false);
   const [selected, setSelected] = useState([]);
   const [focused, setFocused] = useState(false);
 
-  const openSelect = () => {
+  const openSelect = (event) => {
+    event.preventDefault();
+    // Ignore clicks from cmdRemoveItem
+    if (event.target.className === css.cmdRemoveItem) {
+      return;
+    }
+    // Clicks on txtFilter always open the select
+    if (event.currentTarget.className === css.txtFilter) {
+      open(true);
+      height.current = itemListRef.current.offsetHeight;
+      return;
+    }
     open(!isOpen);
     height.current = itemListRef.current.offsetHeight;
   };
 
-  const handleBlur = () => {
-    setFocused(false);
-    open(false);
+  const handleBlur = (event) => {
+    const relatedTarget = event.relatedTarget !== null ? event.relatedTarget : {};
+    if (event.currentTarget === relatedTarget) {
+      return;
+    }
+    if (relatedTarget.className !== css.txtFilter) {
+      setFocused(false);
+      open(false);
+    }
   };
 
   const selectItem = (event) => {
@@ -54,22 +72,27 @@ export default function MultiSelect (props) {
     return (
       <div className={css.selectedItem} key={item.value} style={props.selectedItemStyle}>
         {label}
-        <span className={css.removeButton} data-value={item.value}>×</span>
+        <span className={css.cmdRemoveItem} data-value={item.value}>×</span>
       </div>
     );
   });
 
+  const renderInput = isOpen || (selectedItems.length === 0);
+
   return (
-    <div tabIndex={-1} className={css.select} onFocus={() => setFocused(true)} onBlur={() => handleBlur(false)} onClick={selectItem} style={{ width: props.width, zIndex: (focused ? '9999' : '1'), ...props.style }}>
+    <div tabIndex={-1} className={css.select} onFocus={() => setFocused(true)} onBlur={(event) => handleBlur(event)} onClick={selectItem} style={{ width: props.width, zIndex: (focused ? '9999' : '1'), ...props.style }}>
       <div className={css.header} style={props.headerStyle}>
         <div>
-          {selectedItems}<div className={css.selectedItem} style={{ visibility: 'hidden', maxWidth: '0', ...props.selectedItemStyle }}>&nbsp;</div>
-          <input type='text' onChange={(e) => { props.onFilterChange(e.target.value); }} />
+          <div onClick={openSelect}>
+            {selectedItems}
+          </div>
+          <input onClick={openSelect} style={{ display: (renderInput ? 'initial' : 'none') }} className={css.txtFilter} type='text' onChange={(e) => { props.onFilterChange(e.target.value); }} ref={txtRef} />
         </div>
         <div onClick={openSelect}>
-          <DownArrow className={css.downArrow} />
+          <DownArrow className={css.downArrow} id={css.downArrow} />
         </div>
       </div>
+
       <div className={css.itemContainer} style={{ height: (isOpen === true ? height.current : '0') }}>
         <div className={css.itemList} ref={itemListRef} style={props.listStyle}>
           {items}

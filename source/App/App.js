@@ -42,7 +42,7 @@ export default class App extends PureComponent {
           }}
           selectedItemStyle={{
             background: 'lightblue',
-            border: '1px solid gray',
+            border: '1px solid #7E9EA8',
             boxShadow: '#555 0px 0px 2px',
             color: '#222'
           }} />
