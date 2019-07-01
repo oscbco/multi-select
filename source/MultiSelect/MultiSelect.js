@@ -17,11 +17,11 @@ export default function MultiSelect (props) {
   const openSelect = (event) => {
     event.preventDefault();
     // Ignore clicks from cmdRemoveItem
-    if (event.target.className === css.cmdRemoveItem) {
+    if (event.target.id === css.cmdRemoveItem) {
       return;
     }
     // Clicks on txtFilter always open the select
-    if (event.currentTarget.className === css.txtFilter) {
+    if (event.currentTarget.id === css.txtFilter) {
       open(true);
       height.current = itemListRef.current.offsetHeight;
       return;
@@ -35,7 +35,7 @@ export default function MultiSelect (props) {
     if (event.currentTarget === relatedTarget) {
       return;
     }
-    if (relatedTarget.className !== css.txtFilter) {
+    if (relatedTarget.id !== css.txtFilter) {
       setFocused(false);
       open(false);
     }
@@ -56,9 +56,9 @@ export default function MultiSelect (props) {
   const items = props.items.map(function (item, index) {
     const label = item.label ? item.label : toTitleCase(item.value);
     const check = selected.includes(item.value) ? '✓' : '';
-    const activeItem = index === active ? css.activeItem : '';
+    const activeItem = index === active ? props.classes.activeItem : '';
     return (
-      <div className={css.item + ' ' + activeItem} key={item.value} data-value={item.value}>
+      <div className={css.item + ' ' + activeItem + ' ' + props.classes.item} key={item.value} data-value={item.value}>
         {label} <span data-value={item.value}>{check}</span>
       </div>
     );
@@ -70,9 +70,9 @@ export default function MultiSelect (props) {
     });
     const label = item.label ? item.label : toTitleCase(item.value);
     return (
-      <div className={css.selectedItem} key={item.value} style={props.selectedItemStyle}>
+      <div className={css.selectedItem + ' ' + props.classes.selectedItem} key={item.value} style={props.selectedItemStyle}>
         {label}
-        <span className={css.cmdRemoveItem} data-value={item.value}>×</span>
+        <span id={css.cmdRemoveItem} className={css.cmdRemoveItem + ' ' + props.classes.cmdRemoveItem} data-value={item.value}>×</span>
       </div>
     );
   });
@@ -80,21 +80,21 @@ export default function MultiSelect (props) {
   const renderInput = isOpen || (selectedItems.length === 0);
 
   return (
-    <div tabIndex={-1} className={css.select} onFocus={() => setFocused(true)} onBlur={(event) => handleBlur(event)} onClick={selectItem} style={{ width: props.width, zIndex: (focused ? '9999' : '1'), ...props.style }}>
-      <div className={css.header} style={props.headerStyle}>
+    <div tabIndex={-1} className={css.select + ' ' + props.classes.select} onFocus={() => setFocused(true)} onBlur={(event) => handleBlur(event)} onClick={selectItem} style={{ width: props.width, zIndex: (focused ? '9999' : '1'), ...props.selectStyle }}>
+      <div className={css.header + ' ' + props.classes.header} style={props.headerStyle}>
         <div>
           <div onClick={openSelect}>
             {selectedItems}
           </div>
-          <input onClick={openSelect} style={{ display: (renderInput ? 'initial' : 'none') }} className={css.txtFilter} type='text' onChange={(e) => { props.onFilterChange(e.target.value); }} ref={txtRef} />
+          <input id={css.txtFilter} onClick={openSelect} className={css.txtFilter + ' ' + props.classes.input} style={{ display: (renderInput ? 'initial' : 'none'), ...props.inputStyle }} type='text' onChange={(e) => { props.onFilterChange(e.target.value); }} ref={txtRef} />
         </div>
         <div onClick={openSelect}>
-          <DownArrow className={css.downArrow} id={css.downArrow} />
+          <DownArrow id={css.downArrow} className={css.downArrow + ' ' + props.classes.downArrow} />
         </div>
       </div>
 
-      <div className={css.itemContainer} style={{ height: (isOpen === true ? height.current : '0') }}>
-        <div className={css.itemList} ref={itemListRef} style={props.listStyle}>
+      <div className={css.itemContainer + ' ' + props.classes.itemContainer} style={{ height: (isOpen === true ? height.current : '0'), ...props.itemContainerStyle }}>
+        <div className={css.itemList + ' ' + props.classes.list} ref={itemListRef} style={props.listStyle}>
           {items}
         </div>
       </div>
@@ -105,8 +105,18 @@ export default function MultiSelect (props) {
 MultiSelect.defaultProps = {
   onFilterChange: () => {},
   width: 'auto',
-  style: {},
+  selectStyle: {},
   listStyle: {},
   headerStyle: {},
-  selectedItemStyle: {}
+  selectedItemStyle: {},
+  inputStyle: {},
+  itemContainerStyle: {},
+  classes: {
+    selectClass: '',
+    headerClass: '',
+    inputClass: '',
+    selectedItemClass: '',
+    itemContainerClass: '',
+    listClass: ''
+  }
 };
