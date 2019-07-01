@@ -31,11 +31,8 @@ export default function MultiSelect (props) {
   };
 
   const handleBlur = (event) => {
-    const relatedTarget = event.relatedTarget !== null ? event.relatedTarget : {};
-    if (event.currentTarget === relatedTarget) {
-      return;
-    }
-    if (relatedTarget.id !== css.txtFilter) {
+    const relatedTarget = event.relatedTarget !== null ? event.relatedTarget : document.createElement('p');
+    if (event.currentTarget.contains(relatedTarget) === false) {
       setFocused(false);
       open(false);
     }
