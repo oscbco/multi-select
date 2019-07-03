@@ -1,0 +1,30 @@
+.select {
+  background: #333
+}
+
+.input {
+  background: inherit;
+  border: none;
+  border-bottom: 1px solid #555;
+  outline: none
+}
+
+.item-container {
+  left: 0px;
+  right: 0px
+}
+
+.list {
+  background: #555
+}
+
+.selected-item {
+  background: #999;
+  color: #222
+}
+
+.downArrow {
+  color: white;
+  font-size: larger;
+  font-weight: bolder;
+}

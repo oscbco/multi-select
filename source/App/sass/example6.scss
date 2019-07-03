@@ -1,0 +1,25 @@
+.select {
+  background: orange
+}
+
+.item-container {
+  left: 0px;
+  right: 0px
+}
+
+.input {
+  background: inherit;
+  border: none;
+  border-bottom: 1px solid #333;
+  outline: none
+}
+
+.selected-item {
+  border-radius: 0px;
+  border-right: 1px solid darken(#ffa500, 10%);
+  color: #222
+}
+
+.selected-item:last-of-type {
+  border-right: none;
+}

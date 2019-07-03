@@ -1,139 +1,139 @@
 export const programmingLanguages = [
   {
     label: 'Visual Basic',
-    value: 'vb'
+    id: 'vb'
   }, {
     label: 'PHP',
-    value: 'php'
+    id: 'php'
   }, {
-    value: 'c'
+    id: 'c'
   }, {
     label: 'Javascript',
-    value: 'ecmascript'
+    id: 'ecmascript'
   }, {
     label: 'VS Code',
-    value: 'vsc'
+    id: 'vsc'
   }, {
     label: 'Aptana',
-    value: 'aptana'
+    id: 'aptana'
   }, {
     label: 'Netbeans',
-    value: 'netbeans'
+    id: 'netbeans'
   }, {
     label: 'Eclipse',
-    value: 'eclipse'
+    id: 'eclipse'
   }
 ];
 
 export const fontSizes = [
   {
     label: '9px',
-    value: '9'
+    id: '9'
   }, {
     label: '10px',
-    value: '10'
+    id: '10'
   }, {
     label: '11px',
-    value: '11'
+    id: '11'
   }, {
     label: '12px',
-    value: '12'
+    id: '12'
   }
 ];
 
 export const ides = [
   {
     label: 'VS Code',
-    value: 'vsc'
+    id: 'vsc'
   }, {
     label: 'Aptana',
-    value: 'aptana'
+    id: 'aptana'
   }, {
     label: 'Netbeans',
-    value: 'netbeans'
+    id: 'netbeans'
   }, {
     label: 'Eclipse',
-    value: 'eclipse'
+    id: 'eclipse'
   }
 ];
 
 export const dinosaurFamily = [
   {
-    value: 'Theropod'
+    id: 'Theropod'
   }, {
-    value: 'Sauropod'
+    id: 'Sauropod'
   }, {
-    value: 'Ornothopod'
+    id: 'Ornothopod'
   }
 ];
 
 export const periods = [
   {
-    value: 'Cretaceous'
+    id: 'Cretaceous'
   }, {
-    value: 'Jurassic'
+    id: 'Jurassic'
   }, {
-    value: 'Triasic'
+    id: 'Triasic'
   }
 ];
 
 export const tons = [
   {
     label: '1 Ton',
-    value: '1'
+    id: '1'
   }, {
     label: '2 Tons',
-    value: '2'
+    id: '2'
   }, {
     label: '3 Tons',
-    value: '3'
+    id: '3'
   }, {
     label: '4 Tons',
-    value: '4'
+    id: '4'
   }, {
     label: '5 Tons',
-    value: '5'
+    id: '5'
   }, {
     label: '6 Tons',
-    value: '6'
+    id: '6'
   }, {
     label: '7 Tons',
-    value: '7'
+    id: '7'
   }, {
     label: '8 Tons',
-    value: '8'
+    id: '8'
   }, {
     label: '9 Tons',
-    value: '9'
+    id: '9'
   }, {
     label: '10 Tons',
-    value: '10'
+    id: '10'
   }, {
     label: '11 Tons',
-    value: '11'
+    id: '11'
   }, {
     label: '12 Tons',
-    value: '12'
+    id: '12'
   }, {
     label: '13 Tons',
-    value: '13'
+    id: '13'
   }, {
     label: '14 Tons',
-    value: '14'
+    id: '14'
   }, {
     label: '15 Tons',
-    value: '15'
+    id: '15'
   }, {
     label: '16 Tons',
-    value: '16'
+    id: '16'
   }, {
     label: '17 Tons',
-    value: '17'
+    id: '17'
   }, {
     label: '18 Tons',
-    value: '18'
+    id: '18'
   }, {
     label: '19 Tons',
-    value: '19'
+    id: '19'
   }
 ];

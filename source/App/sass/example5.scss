@@ -1,0 +1,40 @@
+.select {
+  background: #eee;
+  border: 1px solid #999;
+  box-shadow: #555 0px 0px 2px;
+}
+
+.input {
+  background: inherit;
+  border: none;
+  border-bottom: 1px solid #555;
+  outline: none
+}
+
+.selected-item {
+  background: lightblue;
+  border: 1px solid #7E9EA8;
+  box-shadow: #555 0px 0px 2px;
+  color: #222
+}
+
+.list {
+
+}
+
+.item-container {
+
+}
+
+.item {
+  padding: 3px;
+}
+
+.item:hover {
+  background: lightskyblue;
+}
+
+.downArrow {
+  color: red;
+  line-height: 150%;
+}

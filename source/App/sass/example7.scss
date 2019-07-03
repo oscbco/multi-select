@@ -1,0 +1,27 @@
+.select {
+  background: orange
+}
+
+.item-container {
+  left: 0px;
+  right: 0px
+}
+
+.input {
+  background: inherit;
+  border: none;
+  border-bottom: 1px solid #333;
+  outline: none
+}
+
+.selected-item {
+  color: #222
+}
+
+.selected-item::after {
+  content: ' - '
+}
+
+.selected-item:last-of-type::after {
+  content: ''
+}
