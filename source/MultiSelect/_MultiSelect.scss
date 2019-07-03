@@ -18,6 +18,10 @@
 .select * {
   cursor: default;
   box-sizing: border-box;
+  /*
+  border: 1px solid red;
+  background: lightblue;
+  */
 }
 
 /*
@@ -30,6 +34,7 @@
 
 .header > div:nth-child(1) {
   flex-grow: 1;
+  cursor: text;
 }
 
 .header > div:nth-child(2) {
@@ -65,11 +70,11 @@
 * FILTER INPUT
 */
 
-.txtFilter {
+.select .txtFilter {
   cursor: auto;
   width: 100%;
-  border: 1px solid #888;
   font: inherit;
+  margin: 0px;
 }
 
 
