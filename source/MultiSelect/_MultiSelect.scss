@@ -1,31 +1,32 @@
 /*
+ *
  * WRAPPER
+ *
  */
 
  .select {
   position: relative;
   display: inline-block;
-  outline: none;
+
+  background: white;
   border-radius: 3px;
   padding: 4px;
-  background: white;
+  outline: none;
 }
 
-.select:focus {
+.select:focus, .select:focus-within {
   border-radius: 3px 3px 0 0;
 }
 
 .select * {
-  cursor: default;
   box-sizing: border-box;
-  /*
-  border: 1px solid red;
-  background: lightblue;
-  */
+  user-select: none;
 }
 
 /*
+ *
  * HEADER
+ *
  */
 
 .header {
@@ -34,7 +35,6 @@
 
 .header > div:nth-child(1) {
   flex-grow: 1;
-  cursor: text;
 }
 
 .header > div:nth-child(2) {
@@ -42,10 +42,8 @@
 }
 
 .down-arrow {
-  justify-self: right;
-  align-self: center;
-  width: 1.1em;
-  padding: 3px;
+  width: 1em;
+  padding: 2px;
   vertical-align: middle;
 }
 
@@ -54,60 +52,55 @@
  */
 
  .selected-item {
-  display: inline-block;
-  margin-right: 10px;
-  border-radius: 3.5px;
-  padding: 2px 3px 2px 5px;
-  margin: 2px;
+   cursor: default;
+   display: inline-block;
+   border-radius: 3.5px;
+   padding: 2px 3px 2px 5px;
+   margin: 2px;
 }
 
 .cmd-remove-item {
   padding: 3px 2px 3px 3px;
-  line-height: 50%;
 }
 
 /*
-* FILTER INPUT
-*/
+ *
+ * FILTER INPUT
+ *
+ */
 
-.select .txtFilter {
+.txt-filter {
   cursor: auto;
-  width: 100%;
   font: inherit;
+  width: 100%;
   margin: 0px;
 }
 
-
 /*
+ *
  * ITEM LIST
+ *
  */
-/*
- .item-list {
 
-}
-*/
 
 .item-container {
   position: absolute;
   top: 100%;
   left: -1px;
   right: -1px;
-  overflow: hidden;
-  transition: height 0.2s ease;
-  height: 0;
+
   background: inherit;
+  transition: height 0.2s ease;
+  overflow: hidden;
+  border-radius: 0 0 3px 3px;
   border: inherit;
   border-top: none;
-  border-radius: 0 0 3px 3px;
 }
 
 .item-container > div  {
   padding: 5px;
 }
-.item-container > div > .txtFilter {
-  margin-bottom: 5px;
-}
 
-.item-container > div > div {
-  margin-top: 5px;
+.item-container .txt-filter {
+  margin-bottom: 10px;
 }
