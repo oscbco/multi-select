@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 import { DownArrow } from './Shapes';
 import toTitleCase from './titleCase';
@@ -7,7 +7,7 @@ import css from './_MultiSelect.scss';
 
 export default function MultiSelect (props) {
   const itemListRef = useRef(null);
-  const height = useRef();
+  const [height, setHeight] = useState(0);
   const txtRef = useRef();
   const [active] = useState(-1);
   const [isOpen, open] = useState(false);
@@ -17,7 +17,7 @@ export default function MultiSelect (props) {
 
   const handleFilterChange = (e) => {
     setFilterText(e.target.value);
-  }
+  };
 
   const openSelect = (event) => {
     event.preventDefault();
@@ -27,12 +27,12 @@ export default function MultiSelect (props) {
     }
     // Clicks on txtFilter always open the select
     if (event.target.id === css.txtFilter) {
+      setHeight(itemListRef.current.offsetHeight);
       open(true);
-      height.current = itemListRef.current.offsetHeight;
       return;
     }
+    setHeight(itemListRef.current.offsetHeight);
     open(!isOpen);
-    height.current = itemListRef.current.offsetHeight;
   };
 
   const handleBlur = (event) => {
@@ -82,6 +82,11 @@ export default function MultiSelect (props) {
 
   const empty = selectedItems.length === 0;
 
+  useEffect(() => {
+    console.log('itemListRef.current.offsetHeight', itemListRef.current.offsetHeight);
+    setHeight(itemListRef.current.offsetHeight);
+  });
+
   return (
     <div tabIndex={-1} className={css.select + ' ' + props.classes.select} onFocus={() => setFocused(true)} onBlur={(event) => handleBlur(event)} onClick={selectItem} style={{ width: props.width, zIndex: (focused ? '9999' : '1') }}>
       <div className={css.header + ' ' + props.classes.header} onClick={openSelect}>
@@ -97,10 +102,12 @@ export default function MultiSelect (props) {
         </div>
       </div>
 
-      <div className={css.itemContainer + ' ' + props.classes.itemContainer} style={{ height: (isOpen === true ? height.current : '0') }}>
-        <input data-open={isOpen} id={css.txtFilter} className={css.txtFilter + ' ' + props.classes.input} style={{ display: (!empty ? 'inline-block' : 'none') }} type='text' onChange={handleFilterChange} value={filterText} ref={txtRef} />
-        <div className={css.itemList + ' ' + props.classes.list} ref={itemListRef}>
-          {items}
+      <div className={css.itemContainer + ' ' + props.classes.itemContainer} style={{ height: (isOpen === true ? height : '0') }}>
+        <div ref={itemListRef}>
+          <input data-open={isOpen} id={css.txtFilter} className={css.txtFilter + ' ' + props.classes.input} style={{ display: (!empty ? 'inline-block' : 'none') }} type='text' onChange={handleFilterChange} value={filterText} ref={txtRef} />
+          <div className={css.itemList + ' ' + props.classes.list}>
+            {items}
+          </div>
         </div>
       </div>
     </div>
