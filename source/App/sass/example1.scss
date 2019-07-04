@@ -12,8 +12,8 @@
 .input {
   background: inherit;
   border: none;
-  outline: none
-
+  border-bottom: 1px solid transparent;
+  outline: none;
 }
 
 .input[data-open='true'] {
@@ -21,7 +21,7 @@
 }
 
 .selected-item {
-  background: lightgreen;
+  background-color: #72C156;
   border: 0.5px solid green;
 }
 
