@@ -1,5 +1,5 @@
 .select {
-  background: orange
+  background: linear-gradient(to right, orange, #FFB52E);
 }
 
 .item-container {
@@ -10,8 +10,11 @@
 .input {
   background: inherit;
   border: none;
-  border-bottom: 1px solid #333;
   outline: none
+}
+
+.input[data-open='true'] {
+  border-bottom: 1px solid #777;
 }
 
 .selected-item {

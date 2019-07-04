@@ -7,11 +7,15 @@
   right: 0px
 }
 
+
 .input {
   background: inherit;
   border: none;
-  border-bottom: 1px solid #333;
   outline: none
+}
+
+.input[data-open='true'] {
+  border-bottom: 1px solid #777;
 }
 
 .selected-item {

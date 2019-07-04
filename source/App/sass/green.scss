@@ -5,13 +5,17 @@
 
 .input {
   background: inherit;
+  outline: none;
   border: none;
-  border-bottom: 1px solid #555;
-  outline: none
+  border-bottom: 1px solid transparent;
+}
+
+.input[data-open='true'] {
+  border-bottom: 0.4px solid #777;
 }
 
 .selected-item {
-  background: lightblue;
+  background: lightgreen;
   border: 1px solid #7E9EA8;
   box-shadow: #555 0px 0px 2px;
   color: #222

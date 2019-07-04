@@ -1,5 +1,5 @@
 .select {
-  background: white;
+  background: #FAFAFA;
   border: 1px solid #999;
   padding: 4px
 }
@@ -11,20 +11,20 @@
 
 .input {
   background: inherit;
+  outline: none;
   border: none;
   border-bottom: 1px solid transparent;
-  outline: none;
 }
 
 .input[data-open='true'] {
-  border-bottom: 1px solid #777;
+  border-bottom: 0.4px solid #777;
 }
 
 .selected-item {
-  background-color: #72C156;
-  border: 0.5px solid green;
+  background-color: #E5E5E5;
+  border: 0.5px solid #999;
 }
 
 .selected-item:hover {
-  background: green;
+  background: darken(#E5E5E5, 11%);
 }

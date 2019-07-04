@@ -3,13 +3,13 @@ import React, { PureComponent } from 'react';
 import MultiSelect from '../MultiSelect/MultiSelect';
 import './_App.scss';
 
-import cssExample1 from './sass/example1.scss';
-import cssExample2 from './sass/example2.scss';
-import cssExample3 from './sass/example3.scss';
-import cssExample4 from './sass/example4.scss';
-import cssExample5 from './sass/example5.scss';
-import cssExample6 from './sass/example6.scss';
-import cssExample7 from './sass/example7.scss';
+import cssBasic from './sass/basic.scss';
+import cssOrange from './sass/orange.scss';
+import cssDark from './sass/dark.scss';
+import cssBlue from './sass/blue.scss';
+import cssGreen from './sass/green.scss';
+import cssOrangeWithSeparators from './sass/orangeWithSeparators.scss';
+import cssOrangeWithDashes from './sass/orangeWithDashes.scss';
 
 import { programmingLanguages } from './data';
 
@@ -18,35 +18,27 @@ export default class App extends PureComponent {
     return (
       <React.Fragment>
         <h1>MultiSelect</h1>
-        <h2>Usage Examples</h2>
+        <h2>Styling Examples</h2>
+        <h3>Monochrome</h3>
+        <MultiSelect items={programmingLanguages} width='400px' classes={cssBasic} />
+
+        <h3>Orange</h3>
+        <MultiSelect items={programmingLanguages} width='400px' classes={cssOrange} />
+
+        <h3>Orange gradient with separators</h3>
+        <MultiSelect items={programmingLanguages} width='400px' classes={cssOrangeWithSeparators} />
+
+        <h3>Orange with dashes</h3>
+        <MultiSelect items={programmingLanguages} width='400px' classes={cssOrangeWithDashes} />
+
+        <h3>Dark</h3>
+        <MultiSelect items={programmingLanguages} width='400px' classes={cssDark} />
+
+        <h3>Blue</h3>
+        <MultiSelect items={programmingLanguages} width='400px' classes={cssBlue} />
+
         <h3>Style: background: green</h3>
-        <MultiSelect items={programmingLanguages} width='400px' classes={cssExample1} />
-
-        <h3>Style: background: orange</h3>
-        <MultiSelect items={programmingLanguages} width='400px' classes={cssExample2} />
-
-        <h3>Style: background: dark</h3>
-        <MultiSelect items={programmingLanguages} width='400px' classes={cssExample3} />
-
-        <h3>Style: background: light</h3>
-        <MultiSelect items={programmingLanguages} width='400px' classes={cssExample4} />
-
-        <h3>Style: background: green</h3>
-        <MultiSelect items={programmingLanguages} width='400px' classes={cssExample5} />
-
-        <h3>Style: background: orange</h3>
-        <MultiSelect items={programmingLanguages} width='400px' classes={cssExample6} />
-
-        <h3>Style: background: orange</h3>
-        <MultiSelect items={programmingLanguages} width='400px' classes={cssExample7} />
-
-        <h3>Width: auto</h3>
-        <MultiSelect items={programmingLanguages} />
-
-        <h3>Width: auto, but parent's width is 300px</h3>
-        <div style={{ width: '300px' }}>
-          <MultiSelect items={programmingLanguages} width='auto' />
-        </div>
+        <MultiSelect items={programmingLanguages} width='400px' classes={cssGreen} />
       </React.Fragment>
     );
   }

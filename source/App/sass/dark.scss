@@ -1,12 +1,16 @@
 .select {
-  background: #333
+  background: #555;
+  color: #ddd;
 }
 
 .input {
   background: inherit;
   border: none;
-  border-bottom: 1px solid #555;
   outline: none
+}
+
+.input[data-open='true'] {
+  border-bottom: 1px solid #777;
 }
 
 .item-container {
@@ -14,8 +18,8 @@
   right: 0px
 }
 
-.list {
-  background: #555
+.item-container > div {
+  background: #444
 }
 
 .selected-item {
