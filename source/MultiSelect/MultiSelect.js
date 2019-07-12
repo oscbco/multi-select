@@ -11,7 +11,6 @@ export default function MultiSelect (props) {
   const [active] = useState(-1);
   const [isOpen, open] = useState(false);
   const [filterText, setFilterText] = useState('');
-  const [selected, setSelected] = useState([]);
   const [focused, setFocused] = useState(false);
 
   const handleFilterChange = (e) => {
@@ -45,18 +44,22 @@ export default function MultiSelect (props) {
   const selectItem = (event) => {
     const { value } = event.target.dataset;
     if (value !== undefined) {
-      const indexOf = selected.indexOf(value);
+      const item = props.items.find((elem) => {
+        /* eslint eqeqeq:0 */
+        return elem[props.id] == value;
+      });
+      const indexOf = props.selected.indexOf(item[props.id]);
       if (indexOf === -1) {
-        setSelected(selected.concat([value]));
+        props.setSelected(props.selected.concat([item[props.id]]));
       } else {
-        setSelected([...selected.slice(0, indexOf), ...selected.slice(indexOf + 1)]);
+        props.setSelected([...props.selected.slice(0, indexOf), ...props.selected.slice(indexOf + 1)]);
       }
     }
   };
 
   const items = props.items.map(function (item, index) {
     const label = item[props.label] ? item[props.label] : toTitleCase(item[props.id]);
-    const check = selected.includes(item[props.id] + '') ? '✓' : '';
+    const check = props.selected.includes(item[props.id]) ? '✓' : '';
     const activeItem = index === active ? props.classes.activeItem : '';
     return (
       <div className={css.item + ' ' + activeItem + ' ' + props.classes.item} key={item[props.id]} data-value={item[props.id]}>
@@ -65,7 +68,7 @@ export default function MultiSelect (props) {
     );
   });
 
-  const selectedItems = selected.map(function (itemValue, index) {
+  const selectedItems = props.selected.map(function (itemValue, index) {
     const item = props.items.find((elem) => {
       /* eslint eqeqeq:0 */
       return elem[props.id] == itemValue;
