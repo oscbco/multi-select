@@ -11,10 +11,12 @@ export default function MultiSelect (props) {
   const [active] = useState(-1);
   const [isOpen, open] = useState(false);
   const [filterText, setFilterText] = useState('');
+  // const [selected, setSelected] = useState([]);
   const [focused, setFocused] = useState(false);
 
   const handleFilterChange = (e) => {
     setFilterText(e.target.value);
+    open(true);
   };
 
   const openSelect = (event) => {
@@ -57,7 +59,9 @@ export default function MultiSelect (props) {
     }
   };
 
-  const items = props.items.map(function (item, index) {
+  const items = props.items.filter((item) => {
+    return item[props.label] ? item[props.label].includes(filterText) : item[props.id].includes(filterText);
+  }).map(function (item, index) {
     const label = item[props.label] ? item[props.label] : toTitleCase(item[props.id]);
     const check = props.selected.includes(item[props.id]) ? '✓' : '';
     const activeItem = index === active ? props.classes.activeItem : '';
@@ -95,7 +99,7 @@ export default function MultiSelect (props) {
           <div>
             {selectedItems}
           </div>
-          <input data-open={isOpen} id={css.txtFilter} className={css.txtFilter + ' ' + props.classes.input} style={{ display: (empty ? 'inline-block' : 'none') }} type='text' onChange={handleFilterChange} value={filterText} />
+          <input placeholder={props.placeholder} data-open={isOpen} id={css.txtFilter} className={css.txtFilter + ' ' + props.classes.input} style={{ display: (empty ? 'inline-block' : 'none') }} type='text' onChange={handleFilterChange} value={filterText} />
         </div>
 
         <div>
@@ -105,7 +109,7 @@ export default function MultiSelect (props) {
 
       <div className={css.itemContainer + ' ' + props.classes.itemContainer} style={{ height: (isOpen === true ? height : '0') }}>
         <div ref={itemListRef}>
-          <input data-open={isOpen} id={css.txtFilter} className={css.txtFilter + ' ' + props.classes.input} style={{ display: (!empty ? 'inline-block' : 'none') }} type='text' onChange={handleFilterChange} value={filterText} />
+          <input placeholder={props.placeholder} data-open={isOpen} id={css.txtFilter} className={css.txtFilter + ' ' + props.classes.input} style={{ display: (!empty ? 'inline-block' : 'none') }} type='text' onChange={handleFilterChange} value={filterText} />
           <div className={css.itemList + ' ' + props.classes.list}>
             {items}
           </div>

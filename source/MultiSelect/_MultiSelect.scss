@@ -74,6 +74,7 @@
   font: inherit;
   width: 100%;
   margin: 0px;
+  color: inherit;
 }
 
 /*
@@ -101,6 +102,11 @@
   padding: 5px;
 }
 
+.item-list {
+  max-height: calc(100vh / 3);
+}
+
 .item-container .txt-filter {
   margin-bottom: 10px;
+  position: sticky;
 }
