@@ -93,7 +93,7 @@ export default function MultiSelect (props) {
   });
 
   return (
-    <div tabIndex={-1} className={css.select + ' ' + props.classes.select} onFocus={() => setFocused(true)} onBlur={(event) => handleBlur(event)} onClick={selectItem} style={{ width: props.width, zIndex: (focused ? '9999' : '1') }}>
+    <div tabIndex={-1} className={css.select + ' ' + props.classes.select} onFocus={() => setFocused(true)} onBlur={(event) => handleBlur(event)} onClick={selectItem} data-is-open={isOpen} style={{ width: props.width, zIndex: (focused ? '9999' : '1') }}>
       <div className={css.header + ' ' + props.classes.header} onClick={openSelect}>
         <div>
           <div>
@@ -107,7 +107,7 @@ export default function MultiSelect (props) {
         </div>
       </div>
 
-      <div className={css.itemContainer + ' ' + props.classes.itemContainer} style={{ height: (isOpen === true ? height : '0') }}>
+      <div className={css.itemContainer + ' ' + props.classes.itemContainer} data-is-open={isOpen} style={{ height: (isOpen === true ? height : '0') }}>
         <div ref={itemListRef}>
           <input placeholder={props.placeholder} data-open={isOpen} id={css.txtFilter} className={css.txtFilter + ' ' + props.classes.input} style={{ display: (!empty ? 'inline-block' : 'none') }} type='text' onChange={handleFilterChange} value={filterText} />
           <div className={css.itemList + ' ' + props.classes.list}>

@@ -14,8 +14,9 @@
   outline: none;
 }
 
-.select:focus, .select:focus-within {
-  border-radius: 3px 3px 0 0;
+
+.select[data-is-open='true'] {
+  border-radius: 3px;
 }
 
 .select * {
@@ -86,7 +87,7 @@
 
 .item-container {
   position: absolute;
-  top: 100%;
+  top: calc(100%);
   left: -1px;
   right: -1px;
 
@@ -95,7 +96,12 @@
   overflow: hidden;
   border-radius: 0 0 3px 3px;
   border: inherit;
-  border-top: none;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+}
+
+.item-container[data-is-open='true'] {
+  border-bottom: inherit;
 }
 
 .item-container > div  {
