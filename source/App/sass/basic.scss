@@ -1,7 +1,12 @@
 .select {
   background: #FAFAFA;
   border: 1px solid #999;
-  padding: 4px
+  padding: 3px;
+  border-radius: 0px 3px 3px 0px;
+}
+
+.select:focus, .select:focus-within {
+  border-radius: 0px 3px 0px 0px;
 }
 
 .item-container {
@@ -20,11 +25,32 @@
   border-bottom: 0.4px solid #777;
 }
 
-.selected-item {
+/*
+ * SELECTION LIST
+ */
+
+ .selected-item {
   background-color: #E5E5E5;
   border: 0.5px solid #999;
+  margin: 2px 5px 2px 0px;
 }
 
 .selected-item:hover {
   background: darken(#E5E5E5, 11%);
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.txtControl {
+  background: #FAFAFA;
+  border: 1px solid #999;
+  border-right: 0px;
+}
+
+.lblBasic {
+  display: flex;
+  align-items: center;
 }
