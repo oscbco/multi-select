@@ -15,9 +15,7 @@ export const programmingLanguages = [
     menuColor: '#BA930F'
   }, {
     label: 'Javascript',
-    id: 'ecmascript',
-    selectedColor: '#2E86AB',
-    menuColor: '#2E86AB'
+    id: 'ecmascript'
   }, {
     label: 'VS Code',
     id: 'vsc',
