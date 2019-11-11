@@ -66,7 +66,7 @@ export default function MultiSelect (props) {
     const check = props.selected.includes(item[props.id]) ? '✓' : '';
     const activeItem = index === active ? props.classes.activeItem : '';
     return (
-      <div className={css.item + ' ' + activeItem + ' ' + props.classes.item} key={item[props.id]} data-value={item[props.id]} style={{ color: item.menuColor || 'inherit', backgroundColor: item.menuBackground || 'inherit' }}>
+      <div className={css.item + ' ' + activeItem + ' ' + props.classes.item} key={item[props.id]} data-value={item[props.id]} style={{ color: item.menuColor, backgroundColor: item.menuBackground }}>
         {label} <span data-value={item[props.id]}>{check}</span>
       </div>
     );
@@ -79,7 +79,7 @@ export default function MultiSelect (props) {
     });
     const label = item[props.label] ? item[props.label] : toTitleCase(item[props.id]);
     return (
-      <div className={css.selectedItem + ' ' + props.classes.selectedItem} key={item[props.id]} style={{ color: item.selectedColor || 'inherit', backgroundColor: item.selectedBackground || 'inherit' }}>
+      <div className={css.selectedItem + ' ' + props.classes.selectedItem} key={item[props.id]} style={{ color: item.selectedColor, backgroundColor: item.selectedBackground }}>
         {label}
         <span id={css.cmdRemoveItem} className={css.cmdRemoveItem + ' ' + props.classes.cmdRemoveItem} data-value={item[props.id]}>×</span>
       </div>
