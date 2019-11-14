@@ -11,8 +11,8 @@ module.exports = {
     path.join(__dirname, 'source', 'MultiSelect', 'MultiSelect.js')
   ],
   output: {
-    filename: 'build/index.js',
-    chunkFilename: 'build/index.js',
+    filename: 'index.js',
+    chunkFilename: 'index.js',
     path: path.resolve(__dirname),
     publicPath: './',
     library: 'MultiSelect',
@@ -70,7 +70,7 @@ module.exports = {
             loader: 'url-loader',
             options: {
               limit: 1024,
-              name: 'build/images/[name].[ext]'
+              name: 'images/[name].[ext]'
             }
           }
         ]
@@ -90,10 +90,6 @@ module.exports = {
     }
   },
   plugins: [
-    new CleanWebpackPlugin({
-      dry: true,
-      cleanOnceBeforeBuildPatterns: ['build']
-    }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production')
     }),
@@ -101,8 +97,8 @@ module.exports = {
       sourceMap: false
     }),
     new MiniCssExtractPlugin({
-      filename: 'build/css/[name].css',
-      chunkFilename: 'build/css/[id].css'
+      filename: 'css/[name].css',
+      chunkFilename: 'css/[id].css'
     }),
     new BundleAnalyzerPlugin()
   ],
