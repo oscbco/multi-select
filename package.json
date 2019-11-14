@@ -9,8 +9,8 @@
     "build": "webpack --config webpack.prod.js -p"
   },
   "files": [
-    "build/index.js",
-    "build/css/main.css",
+    "index.js",
+    "main.css",
     "LICENSE.md"
   ],
   "jest": {

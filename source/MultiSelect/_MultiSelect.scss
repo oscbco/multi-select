@@ -73,7 +73,7 @@
 .txt-filter {
   cursor: auto;
   font: inherit;
-  width: 95%;
+  width: calc(100% - 7px);
   margin: 0px;
   color: inherit;
 }
@@ -115,4 +115,14 @@
 .item-container .txt-filter {
   margin-bottom: 10px;
   position: sticky;
+}
+
+.placeholder-item {
+  visibility: hidden;
+  width: 1px;
+  max-width: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: 0;
+  margin-right: 0;
 }

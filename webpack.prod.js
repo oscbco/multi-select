@@ -1,7 +1,6 @@
 var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 var MiniCssExtractPlugin = require('mini-css-extract-plugin');
 var UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-var { CleanWebpackPlugin } = require('clean-webpack-plugin');
 var webpack = require('webpack');
 var path = require('path');
 
@@ -37,12 +36,7 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              // you can specify a publicPath here
-              // by default it use publicPath in webpackOptions.output
-              publicPath: '../'
-            }
+            loader: 'style-loader'
           },
           {
             loader: 'css-loader',
@@ -97,8 +91,8 @@ module.exports = {
       sourceMap: false
     }),
     new MiniCssExtractPlugin({
-      filename: 'css/[name].css',
-      chunkFilename: 'css/[id].css'
+      filename: '[name].css',
+      chunkFilename: '[id].css'
     }),
     new BundleAnalyzerPlugin()
   ],

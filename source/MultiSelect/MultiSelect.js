@@ -100,7 +100,7 @@ export default function MultiSelect (props) {
             {selectedItems}
           </div>
           <input placeholder={props.placeholder} data-open={isOpen} id={css.txtFilter} className={css.txtFilter + ' ' + props.classes.input} style={{ display: (empty ? 'inline-block' : 'none') }} type='text' onChange={handleFilterChange} value={filterText} />
-          {selectedItems.length === 0 ? <div className={css.selectedItem + ' ' + props.classes.selectedItem} style={{ visibility: 'hidden' }}>&nbsp;</div> : null}
+          {selectedItems.length === 0 ? <div className={css.selectedItem + ' ' + props.classes.selectedItem + ' ' + css.placeholderItem}>&nbsp;</div> : null}
         </div>
 
         <div>
