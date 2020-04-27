@@ -27,7 +27,7 @@ export default function MultiSelect (props) {
       return;
     }
     // Clicks on txtFilter always open the select
-    if (event.target.id === css.txtFilter) {
+    if (event.target.dataset.id === css.txtFilter) {
       setHeight(itemListRef.current.offsetHeight);
       open(true);
       return;
@@ -100,7 +100,7 @@ export default function MultiSelect (props) {
           <div>
             {selectedItems}
           </div>
-          <input placeholder={props.placeholder} data-open={isOpen} id={css.txtFilter} className={css.txtFilter + ' ' + props.classes.input} style={{ display: (empty ? 'inline-block' : 'none') }} type='text' onChange={handleFilterChange} value={filterText} />
+          <input placeholder={props.placeholder} data-open={isOpen} data-id={css.txtFilter} className={css.txtFilter + ' ' + props.classes.input} style={{ display: (empty ? 'inline-block' : 'none') }} type='text' onChange={handleFilterChange} value={filterText} />
           {selectedItems.length === 0 ? <div className={css.selectedItem + ' ' + props.classes.selectedItem + ' ' + css.placeholderItem}>&nbsp;</div> : null}
         </div>
 
@@ -111,7 +111,7 @@ export default function MultiSelect (props) {
 
       <div className={css.itemContainer + ' ' + props.classes.itemContainer} data-is-open={isOpen} style={{ height: (isOpen === true ? height : '0') }}>
         <div ref={itemListRef}>
-          <input placeholder={props.placeholder} data-open={isOpen} id={css.txtFilter} className={css.txtFilter + ' ' + props.classes.input} style={{ display: (!empty ? 'inline-block' : 'none') }} type='text' onChange={handleFilterChange} value={filterText} />
+          <input placeholder={props.placeholder} data-open={isOpen} data-id={css.txtFilter} className={css.txtFilter + ' ' + props.classes.input} style={{ display: (!empty ? 'inline-block' : 'none') }} type='text' onChange={handleFilterChange} value={filterText} />
           <div className={css.itemList + ' ' + props.classes.list}>
             {items}
           </div>
