@@ -5,7 +5,6 @@ var path = require('path');
 
 module.exports = {
   entry: [
-    // 'react-hot-loader/patch',
     path.join(__dirname, 'source', 'index.js')
   ],
   output: {
@@ -29,10 +28,17 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: {
-              presets: [['@babel/preset-env', {
-                modules: false
-              }], '@babel/preset-react'],
-              plugins: ['@babel/plugin-proposal-class-properties', '@babel/plugin-transform-async-to-generator', '@babel/plugin-proposal-object-rest-spread', '@babel/plugin-transform-react-jsx-source', 'react-hot-loader/babel']
+              presets: [
+                ['@babel/preset-env', { modules: false }],
+                '@babel/preset-react'
+              ],
+              plugins: [
+                '@babel/plugin-proposal-class-properties',
+                '@babel/plugin-transform-async-to-generator',
+                '@babel/plugin-proposal-object-rest-spread',
+                '@babel/plugin-transform-react-jsx-source',
+                'react-hot-loader/babel'
+              ]
             }
           }
         ]
@@ -90,6 +96,11 @@ module.exports = {
           chunks: 'all'
         }
       }
+    }
+  },
+  resolve: {
+    alias: {
+      'react-dom': '@hot-loader/react-dom'
     }
   },
   plugins: [
