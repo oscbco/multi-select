@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 import { DownArrow } from './Shapes';
 import toTitleCase from './titleCase';
@@ -133,4 +134,15 @@ MultiSelect.defaultProps = {
   },
   id: 'id',
   label: 'label'
+};
+
+MultiSelect.propTypes = {
+  classes: PropTypes.object,
+  placeholder: PropTypes.string,
+  id: PropTypes.string,
+  label: PropTypes.string,
+  selected: PropTypes.array,
+  setSelected: PropTypes.func,
+  items: PropTypes.array,
+  width: PropTypes.string
 };
