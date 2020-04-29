@@ -1,1 +1,644 @@
-!function(e,t){"object"==typeof exports&&"object"==typeof module?module.exports=t(require("react")):"function"==typeof define&&define.amd?define(["react"],t):"object"==typeof exports?exports.MultiSelect=t(require("react")):e.MultiSelect=t(e.React)}(window,function(r){return i={},o.m=n=[function(e,t){e.exports=r},function(e,t,r){e.exports=r(2)},function(e,t,r){"use strict";function a(e){return(a="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}Object.defineProperty(t,"__esModule",{value:!0}),t.default=u;var _=function(e){if(e&&e.__esModule)return e;if(null===e||"object"!==a(e)&&"function"!=typeof e)return{default:e};var t=l();if(t&&t.has(e))return t.get(e);var r={},n=Object.defineProperty&&Object.getOwnPropertyDescriptor;for(var o in e)if(Object.prototype.hasOwnProperty.call(e,o)){var i=n?Object.getOwnPropertyDescriptor(e,o):null;i&&(i.get||i.set)?Object.defineProperty(r,o,i):r[o]=e[o]}r.default=e,t&&t.set(e,r);return r}(r(0)),g=r(3),N=n(r(4)),x=n(r(5)),w="/home/darkcode/Projects/libraries/multi-select/source/MultiSelect/MultiSelect.js";function n(e){return e&&e.__esModule?e:{default:e}}function l(){if("function"!=typeof WeakMap)return null;var e=new WeakMap;return l=function(){return e},e}function j(e){return function(e){if(Array.isArray(e))return i(e)}(e)||function(e){if("undefined"!=typeof Symbol&&Symbol.iterator in Object(e))return Array.from(e)}(e)||o(e)||function(){throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}()}function S(e,t){return function(e){if(Array.isArray(e))return e}(e)||function(e,t){if("undefined"==typeof Symbol||!(Symbol.iterator in Object(e)))return;var r=[],n=!0,o=!1,i=void 0;try{for(var a,l=e[Symbol.iterator]();!(n=(a=l.next()).done)&&(r.push(a.value),!t||r.length!==t);n=!0);}catch(e){o=!0,i=e}finally{try{n||null==l.return||l.return()}finally{if(o)throw i}}return r}(e,t)||o(e,t)||function(){throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}()}function o(e,t){if(e){if("string"==typeof e)return i(e,t);var r=Object.prototype.toString.call(e).slice(8,-1);return"Object"===r&&e.constructor&&(r=e.constructor.name),"Map"===r||"Set"===r?Array.from(r):"Arguments"===r||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r)?i(e,t):void 0}}function i(e,t){(null==t||t>e.length)&&(t=e.length);for(var r=0,n=new Array(t);r<t;r++)n[r]=e[r];return n}function u(i){function e(e){f(e.target.value),c(!0)}var t=(0,_.useRef)(null),r=S((0,_.useState)(0),2),n=r[0],o=r[1],a=S((0,_.useState)(-1),1)[0],l=S((0,_.useState)(!1),2),u=l[0],c=l[1],s=S((0,_.useState)(""),2),d=s[0],f=s[1],m=S((0,_.useState)(!1),2),p=m[0],b=m[1],v=i.items.filter(function(e){return e[i.label]?e[i.label].includes(d):e[i.id].includes(d)}).map(function(e,t){var r=e[i.label]?e[i.label]:(0,N.default)(e[i.id]),n=i.selected.includes(e[i.id])?"✓":"",o=t===a?i.classes.activeItem:"";return _.default.createElement("div",{className:x.default.item+" "+o+" "+i.classes.item,key:e[i.id],"data-value":e[i.id],style:{color:e.menuColor,backgroundColor:e.menuBackground},__source:{fileName:w,lineNumber:69,columnNumber:7}},r," ",_.default.createElement("span",{"data-value":e[i.id],__source:{fileName:w,lineNumber:70,columnNumber:17}},n))}),h=i.selected.map(function(t,e){var r=i.items.find(function(e){return e[i.id]==t}),n=r[i.label]?r[i.label]:(0,N.default)(r[i.id]);return _.default.createElement("div",{className:x.default.selectedItem+" "+i.classes.selectedItem,key:r[i.id],style:{color:r.selectedColor,backgroundColor:r.selectedBackground},__source:{fileName:w,lineNumber:82,columnNumber:7}},n,_.default.createElement("span",{id:x.default.cmdRemoveItem,className:x.default.cmdRemoveItem+" "+i.classes.cmdRemoveItem,"data-value":r[i.id],__source:{fileName:w,lineNumber:84,columnNumber:9}},"×"))}),y=0===h.length;return(0,_.useEffect)(function(){o(t.current.offsetHeight)}),_.default.createElement("div",{tabIndex:-1,className:x.default.select+" "+i.classes.select,onFocus:function(){return b(!0)},onBlur:function(e){return r=null!==(t=e).relatedTarget?t.relatedTarget:document.createElement("p"),void(!1===t.currentTarget.contains(r)&&(b(!1),c(!1)));var t,r},onClick:function(e){var t=e.target.dataset.value;if(void 0!==t){var r=i.items.find(function(e){return e[i.id]==t}),n=i.selected.indexOf(r[i.id]);-1===n?i.setSelected(i.selected.concat([r[i.id]])):i.setSelected([].concat(j(i.selected.slice(0,n)),j(i.selected.slice(n+1))))}},"data-is-open":u,style:{width:i.width,zIndex:p?"9999":"1"},__source:{fileName:w,lineNumber:96,columnNumber:5}},_.default.createElement("div",{className:x.default.header+" "+i.classes.header,onClick:function(e){if(e.preventDefault(),e.target.id!==x.default.cmdRemoveItem){if(e.target.id===x.default.txtFilter)return o(t.current.offsetHeight),void c(!0);o(t.current.offsetHeight),c(!u)}},__source:{fileName:w,lineNumber:97,columnNumber:7}},_.default.createElement("div",{__source:{fileName:w,lineNumber:98,columnNumber:9}},_.default.createElement("div",{__source:{fileName:w,lineNumber:99,columnNumber:11}},h),_.default.createElement("input",{placeholder:i.placeholder,"data-open":u,id:x.default.txtFilter,className:x.default.txtFilter+" "+i.classes.input,style:{display:y?"inline-block":"none"},type:"text",onChange:e,value:d,__source:{fileName:w,lineNumber:102,columnNumber:11}}),0===h.length?_.default.createElement("div",{className:x.default.selectedItem+" "+i.classes.selectedItem+" "+x.default.placeholderItem,__source:{fileName:w,lineNumber:103,columnNumber:41}}," "):null),_.default.createElement("div",{__source:{fileName:w,lineNumber:106,columnNumber:9}},_.default.createElement(g.DownArrow,{id:x.default.downArrow,className:x.default.downArrow+" "+i.classes.downArrow,__source:{fileName:w,lineNumber:107,columnNumber:11}}))),_.default.createElement("div",{className:x.default.itemContainer+" "+i.classes.itemContainer,"data-is-open":u,style:{height:!0===u?n:"0"},__source:{fileName:w,lineNumber:111,columnNumber:7}},_.default.createElement("div",{ref:t,__source:{fileName:w,lineNumber:112,columnNumber:9}},_.default.createElement("input",{placeholder:i.placeholder,"data-open":u,id:x.default.txtFilter,className:x.default.txtFilter+" "+i.classes.input,style:{display:y?"none":"inline-block"},type:"text",onChange:e,value:d,__source:{fileName:w,lineNumber:113,columnNumber:11}}),_.default.createElement("div",{className:x.default.itemList+" "+i.classes.list,__source:{fileName:w,lineNumber:114,columnNumber:11}},v))))}u.defaultProps={onFilterChange:function(){},width:"auto",classes:{selectClass:"",headerClass:"",inputClass:"",selectedItemClass:"",itemContainerClass:"",listClass:""},id:"id",label:"label"}},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.DownArrow=void 0;var n,o=(n=r(0))&&n.__esModule?n:{default:n},i="/home/darkcode/Projects/libraries/multi-select/source/MultiSelect/Shapes.js";t.DownArrow=function(e){var t=e.className,r=e.handleClick;return o.default.createElement("svg",{className:t,height:"0.9em",version:"1.1",viewBox:"0 0 8.4666665 8.4666669",onClick:r,__source:{fileName:i,lineNumber:4,columnNumber:3}},o.default.createElement("g",{transform:"translate(0 -288.53)",fill:"none",stroke:"#000",strokeLinecap:"round",strokeWidth:".8176",__source:{fileName:i,lineNumber:5,columnNumber:5}},o.default.createElement("path",{d:"m0.61405 290.96 3.6193 3.6193",stroke:"currentColor",__source:{fileName:i,lineNumber:6,columnNumber:7}}),o.default.createElement("path",{d:"m7.8526 290.96-3.6193 3.6193",stroke:"currentColor",__source:{fileName:i,lineNumber:7,columnNumber:7}})))}},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default=function(e){return e.charAt(0).toUpperCase()+e.replace(/_/g," ").substring(1)}},function(e,t,r){var n=r(6),o=r(7);"string"==typeof(o=o.__esModule?o.default:o)&&(o=[[e.i,o,""]]);var i={insert:"head",singleton:!1},a=(n(o,i),o.locals?o.locals:{});e.exports=a},function(e,t,i){"use strict";var r,n,o=function(){return void 0===r&&(r=Boolean(window&&document&&document.all&&!window.atob)),r},a=(n={},function(e){if(void 0===n[e]){var t=document.querySelector(e);if(window.HTMLIFrameElement&&t instanceof window.HTMLIFrameElement)try{t=t.contentDocument.head}catch(e){t=null}n[e]=t}return n[e]}),d=[];function f(e){for(var t=-1,r=0;r<d.length;r++)if(d[r].identifier===e){t=r;break}return t}function u(e,t){for(var r={},n=[],o=0;o<e.length;o++){var i=e[o],a=t.base?i[0]+t.base:i[0],l=r[a]||0,u="".concat(a," ").concat(l);r[a]=l+1;var c=f(u),s={css:i[1],media:i[2],sourceMap:i[3]};-1!==c?(d[c].references++,d[c].updater(s)):d.push({identifier:u,updater:v(s,t),references:1}),n.push(u)}return n}function l(e){var t=document.createElement("style"),r=e.attributes||{};if(void 0===r.nonce){var n=i.nc;n&&(r.nonce=n)}if(Object.keys(r).forEach(function(e){t.setAttribute(e,r[e])}),"function"==typeof e.insert)e.insert(t);else{var o=a(e.insert||"head");if(!o)throw new Error("Couldn't find a style target. This probably means that the value for the 'insert' parameter is invalid.");o.appendChild(t)}return t}var c,s=(c=[],function(e,t){return c[e]=t,c.filter(Boolean).join("\n")});function m(e,t,r,n){var o=r?"":n.media?"@media ".concat(n.media," {").concat(n.css,"}"):n.css;if(e.styleSheet)e.styleSheet.cssText=s(t,o);else{var i=document.createTextNode(o),a=e.childNodes;a[t]&&e.removeChild(a[t]),a.length?e.insertBefore(i,a[t]):e.appendChild(i)}}var p=null,b=0;function v(t,e){var r,n,o;if(e.singleton){var i=b++;r=p=p||l(e),n=m.bind(null,r,i,!1),o=m.bind(null,r,i,!0)}else r=l(e),n=function(e,t,r){var n=r.css,o=r.media,i=r.sourceMap;if(o?e.setAttribute("media",o):e.removeAttribute("media"),i&&btoa&&(n+="\n/*# sourceMappingURL=data:application/json;base64,".concat(btoa(unescape(encodeURIComponent(JSON.stringify(i))))," */")),e.styleSheet)e.styleSheet.cssText=n;else{for(;e.firstChild;)e.removeChild(e.firstChild);e.appendChild(document.createTextNode(n))}}.bind(null,r,e),o=function(){var e;null!==(e=r).parentNode&&e.parentNode.removeChild(e)};return n(t),function(e){if(e){if(e.css===t.css&&e.media===t.media&&e.sourceMap===t.sourceMap)return;n(t=e)}else o()}}e.exports=function(e,a){(a=a||{}).singleton||"boolean"==typeof a.singleton||(a.singleton=o());var l=u(e=e||[],a);return function(e){if(e=e||[],"[object Array]"===Object.prototype.toString.call(e)){for(var t=0;t<l.length;t++){var r=f(l[t]);d[r].references--}for(var n=u(e,a),o=0;o<l.length;o++){var i=f(l[o]);0===d[i].references&&(d[i].updater(),d.splice(i,1))}l=n}}}},function(e,t,r){(t=r(8)(!1)).push([e.i,"._1f4KvlI1rx-3baxCJxqkWf{position:relative;display:inline-block;background:white;border-radius:3px;padding:4px;outline:none}._1f4KvlI1rx-3baxCJxqkWf[data-is-open='true']{border-radius:3px}._1f4KvlI1rx-3baxCJxqkWf *{box-sizing:border-box;user-select:none}.AyDHj_iVdxs0mV-lHKWwA{display:flex}.AyDHj_iVdxs0mV-lHKWwA>div:nth-child(1){flex-grow:1}.AyDHj_iVdxs0mV-lHKWwA>div:nth-child(2){flex-grow:0}._3YOM1QA0cp8qmPwcgusaIe{width:1em;padding:2px;vertical-align:middle}._2kjKYYLAoYcqBeXW2ngScO{cursor:default;display:inline-block;border-radius:3.5px;padding:2px 3px 2px 5px;margin:2px}._3kJbI7XA_P_g3O24jFiNyq{padding:3px 2px 3px 3px}._3-iNI-D3qzFqDZc8qKKJbj{cursor:auto;font:inherit;width:calc(100% - 7px);margin:0px;color:inherit}._1b9KRus8cWq9wzEZQ5QNXj{position:absolute;top:calc(100% - 1px);left:-1px;right:-1px;background:inherit;transition:height 0.2s ease;overflow:hidden;border-radius:0 0 3px 3px;border:inherit;border-top:0px solid transparent;border-bottom:0px solid transparent}._1b9KRus8cWq9wzEZQ5QNXj[data-is-open='true']{border-bottom:inherit}._1b9KRus8cWq9wzEZQ5QNXj>div{padding:5px}._1ROtNr2H5R9o-Mq1PLt_4I{max-height:calc(100vh / 3)}._1b9KRus8cWq9wzEZQ5QNXj ._3-iNI-D3qzFqDZc8qKKJbj{margin-bottom:10px;position:sticky}.twr-XfhZq0GqP5ti3Bg2A{visibility:hidden;width:1px;max-width:1px;padding-left:0;padding-right:0;margin-left:0;margin-right:0}\n",""]),t.locals={select:"_1f4KvlI1rx-3baxCJxqkWf",header:"AyDHj_iVdxs0mV-lHKWwA","down-arrow":"_3YOM1QA0cp8qmPwcgusaIe",downArrow:"_3YOM1QA0cp8qmPwcgusaIe","selected-item":"_2kjKYYLAoYcqBeXW2ngScO",selectedItem:"_2kjKYYLAoYcqBeXW2ngScO","cmd-remove-item":"_3kJbI7XA_P_g3O24jFiNyq",cmdRemoveItem:"_3kJbI7XA_P_g3O24jFiNyq","txt-filter":"_3-iNI-D3qzFqDZc8qKKJbj",txtFilter:"_3-iNI-D3qzFqDZc8qKKJbj","item-container":"_1b9KRus8cWq9wzEZQ5QNXj",itemContainer:"_1b9KRus8cWq9wzEZQ5QNXj","item-list":"_1ROtNr2H5R9o-Mq1PLt_4I",itemList:"_1ROtNr2H5R9o-Mq1PLt_4I","placeholder-item":"twr-XfhZq0GqP5ti3Bg2A",placeholderItem:"twr-XfhZq0GqP5ti3Bg2A"},e.exports=t},function(e,t,r){"use strict";e.exports=function(r){var u=[];return u.toString=function(){return this.map(function(e){var t=function(e,t){var r=e[1]||"",n=e[3];if(!n)return r;if(t&&"function"==typeof btoa){var o=function(e){var t=btoa(unescape(encodeURIComponent(JSON.stringify(e)))),r="sourceMappingURL=data:application/json;charset=utf-8;base64,".concat(t);return"/*# ".concat(r," */")}(n),i=n.sources.map(function(e){return"/*# sourceURL=".concat(n.sourceRoot||"").concat(e," */")});return[r].concat(i).concat([o]).join("\n")}return[r].join("\n")}(e,r);return e[2]?"@media ".concat(e[2]," {").concat(t,"}"):t}).join("")},u.i=function(e,t,r){"string"==typeof e&&(e=[[null,e,""]]);var n={};if(r)for(var o=0;o<this.length;o++){var i=this[o][0];null!=i&&(n[i]=!0)}for(var a=0;a<e.length;a++){var l=[].concat(e[a]);r&&n[l[0]]||(t&&(l[2]?l[2]="".concat(t," and ").concat(l[2]):l[2]=t),u.push(l))}},u}}],o.c=i,o.d=function(e,t,r){o.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},o.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},o.t=function(t,e){if(1&e&&(t=o(t)),8&e)return t;if(4&e&&"object"==typeof t&&t&&t.__esModule)return t;var r=Object.create(null);if(o.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:t}),2&e&&"string"!=typeof t)for(var n in t)o.d(r,n,function(e){return t[e]}.bind(null,n));return r},o.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return o.d(t,"a",t),t},o.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},o.p="./",o(o.s=1);function o(e){if(i[e])return i[e].exports;var t=i[e]={i:e,l:!1,exports:{}};return n[e].call(t.exports,t,t.exports,o),t.l=!0,t.exports}var n,i});
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory(require("react"));
+	else if(typeof define === 'function' && define.amd)
+		define(["react"], factory);
+	else if(typeof exports === 'object')
+		exports["MultiSelect"] = factory(require("react"));
+	else
+		root["MultiSelect"] = factory(root["React"]);
+})(window, function(__WEBPACK_EXTERNAL_MODULE__0__) {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "./";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE__0__;
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(2);
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = MultiSelect;
+
+var _react = _interopRequireWildcard(__webpack_require__(0));
+
+var _propTypes = _interopRequireDefault(__webpack_require__(3));
+
+var _Shapes = __webpack_require__(6);
+
+var _titleCase = _interopRequireDefault(__webpack_require__(7));
+
+var _MultiSelect = _interopRequireDefault(__webpack_require__(8));
+
+var _jsxFileName = "/home/darkcode/Projects/libraries/multi-select/source/MultiSelect/MultiSelect.js";
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(n); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function MultiSelect(props) {
+  var itemListRef = (0, _react.useRef)(null);
+
+  var _useState = (0, _react.useState)(0),
+      _useState2 = _slicedToArray(_useState, 2),
+      height = _useState2[0],
+      setHeight = _useState2[1];
+
+  var _useState3 = (0, _react.useState)(-1),
+      _useState4 = _slicedToArray(_useState3, 1),
+      active = _useState4[0];
+
+  var _useState5 = (0, _react.useState)(false),
+      _useState6 = _slicedToArray(_useState5, 2),
+      isOpen = _useState6[0],
+      open = _useState6[1];
+
+  var _useState7 = (0, _react.useState)(''),
+      _useState8 = _slicedToArray(_useState7, 2),
+      filterText = _useState8[0],
+      setFilterText = _useState8[1]; // const [selected, setSelected] = useState([]);
+
+
+  var _useState9 = (0, _react.useState)(false),
+      _useState10 = _slicedToArray(_useState9, 2),
+      focused = _useState10[0],
+      setFocused = _useState10[1];
+
+  var handleFilterChange = function handleFilterChange(e) {
+    setFilterText(e.target.value);
+    open(true);
+  };
+
+  var openSelect = function openSelect(event) {
+    event.preventDefault(); // Ignore clicks from cmdRemoveItem
+
+    if (event.target.id === _MultiSelect["default"].cmdRemoveItem) {
+      return;
+    } // Clicks on txtFilter always open the select
+
+
+    if (event.target.dataset.id === _MultiSelect["default"].txtFilter) {
+      setHeight(itemListRef.current.offsetHeight);
+      open(true);
+      return;
+    }
+
+    setHeight(itemListRef.current.offsetHeight);
+    open(!isOpen);
+  };
+
+  var handleBlur = function handleBlur(event) {
+    var relatedTarget = event.relatedTarget !== null ? event.relatedTarget : document.createElement('p');
+
+    if (event.currentTarget.contains(relatedTarget) === false) {
+      setFocused(false);
+      open(false);
+    }
+  };
+
+  var selectItem = function selectItem(event) {
+    var value = event.target.dataset.value;
+
+    if (value !== undefined) {
+      var item = props.items.find(function (elem) {
+        /* eslint eqeqeq:0 */
+        return elem[props.id] == value;
+      });
+      var indexOf = props.selected.indexOf(item[props.id]);
+
+      if (indexOf === -1) {
+        props.setSelected(props.selected.concat([item[props.id]]));
+      } else {
+        props.setSelected([].concat(_toConsumableArray(props.selected.slice(0, indexOf)), _toConsumableArray(props.selected.slice(indexOf + 1))));
+      }
+    }
+  };
+
+  var items = props.items.filter(function (item) {
+    return item[props.label] ? item[props.label].includes(filterText) : item[props.id].includes(filterText);
+  }).map(function (item, index) {
+    var label = item[props.label] ? item[props.label] : (0, _titleCase["default"])(item[props.id]);
+    var check = props.selected.includes(item[props.id]) ? '✓' : '';
+    var activeItem = index === active ? props.classes.activeItem : '';
+    return /*#__PURE__*/_react["default"].createElement("div", {
+      className: _MultiSelect["default"].item + ' ' + activeItem + ' ' + props.classes.item,
+      key: item[props.id],
+      "data-value": item[props.id],
+      style: {
+        color: item.menuColor,
+        backgroundColor: item.menuBackground
+      },
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 70,
+        columnNumber: 7
+      }
+    }, label, " ", /*#__PURE__*/_react["default"].createElement("span", {
+      "data-value": item[props.id],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 71,
+        columnNumber: 17
+      }
+    }, check));
+  });
+  var selectedItems = props.selected.map(function (itemValue, index) {
+    var item = props.items.find(function (elem) {
+      /* eslint eqeqeq:0 */
+      return elem[props.id] == itemValue;
+    });
+    var label = item[props.label] ? item[props.label] : (0, _titleCase["default"])(item[props.id]);
+    return /*#__PURE__*/_react["default"].createElement("div", {
+      className: _MultiSelect["default"].selectedItem + ' ' + props.classes.selectedItem,
+      key: item[props.id],
+      style: {
+        color: item.selectedColor,
+        backgroundColor: item.selectedBackground
+      },
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 83,
+        columnNumber: 7
+      }
+    }, label, /*#__PURE__*/_react["default"].createElement("span", {
+      id: _MultiSelect["default"].cmdRemoveItem,
+      className: _MultiSelect["default"].cmdRemoveItem + ' ' + props.classes.cmdRemoveItem,
+      "data-value": item[props.id],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 85,
+        columnNumber: 9
+      }
+    }, "\xD7"));
+  });
+  var empty = selectedItems.length === 0;
+  (0, _react.useEffect)(function () {
+    setHeight(itemListRef.current.offsetHeight);
+  });
+  return /*#__PURE__*/_react["default"].createElement("div", {
+    tabIndex: -1,
+    className: _MultiSelect["default"].select + ' ' + props.classes.select,
+    onFocus: function onFocus() {
+      return setFocused(true);
+    },
+    onBlur: function onBlur(event) {
+      return handleBlur(event);
+    },
+    onClick: selectItem,
+    "data-is-open": isOpen,
+    style: {
+      width: props.width,
+      zIndex: focused ? '9999' : '1'
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 97,
+      columnNumber: 5
+    }
+  }, /*#__PURE__*/_react["default"].createElement("div", {
+    className: _MultiSelect["default"].header + ' ' + props.classes.header,
+    onClick: openSelect,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 98,
+      columnNumber: 7
+    }
+  }, /*#__PURE__*/_react["default"].createElement("div", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 99,
+      columnNumber: 9
+    }
+  }, /*#__PURE__*/_react["default"].createElement("div", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 100,
+      columnNumber: 11
+    }
+  }, selectedItems), /*#__PURE__*/_react["default"].createElement("input", {
+    placeholder: props.placeholder,
+    "data-open": isOpen,
+    "data-id": _MultiSelect["default"].txtFilter,
+    className: _MultiSelect["default"].txtFilter + ' ' + props.classes.input,
+    style: {
+      display: empty ? 'inline-block' : 'none'
+    },
+    type: "text",
+    onChange: handleFilterChange,
+    value: filterText,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 103,
+      columnNumber: 11
+    }
+  }), selectedItems.length === 0 ? /*#__PURE__*/_react["default"].createElement("div", {
+    className: _MultiSelect["default"].selectedItem + ' ' + props.classes.selectedItem + ' ' + _MultiSelect["default"].placeholderItem,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 104,
+      columnNumber: 41
+    }
+  }, "\xA0") : null), /*#__PURE__*/_react["default"].createElement("div", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 107,
+      columnNumber: 9
+    }
+  }, /*#__PURE__*/_react["default"].createElement(_Shapes.DownArrow, {
+    id: _MultiSelect["default"].downArrow,
+    className: _MultiSelect["default"].downArrow + ' ' + props.classes.downArrow,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 108,
+      columnNumber: 11
+    }
+  }))), /*#__PURE__*/_react["default"].createElement("div", {
+    className: _MultiSelect["default"].itemContainer + ' ' + props.classes.itemContainer,
+    "data-is-open": isOpen,
+    style: {
+      height: isOpen === true ? height : '0'
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 112,
+      columnNumber: 7
+    }
+  }, /*#__PURE__*/_react["default"].createElement("div", {
+    ref: itemListRef,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 113,
+      columnNumber: 9
+    }
+  }, /*#__PURE__*/_react["default"].createElement("input", {
+    placeholder: props.placeholder,
+    "data-open": isOpen,
+    "data-id": _MultiSelect["default"].txtFilter,
+    className: _MultiSelect["default"].txtFilter + ' ' + props.classes.input,
+    style: {
+      display: !empty ? 'inline-block' : 'none'
+    },
+    type: "text",
+    onChange: handleFilterChange,
+    value: filterText,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 114,
+      columnNumber: 11
+    }
+  }), /*#__PURE__*/_react["default"].createElement("div", {
+    className: _MultiSelect["default"].itemList + ' ' + props.classes.list,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 115,
+      columnNumber: 11
+    }
+  }, items))));
+}
+
+MultiSelect.defaultProps = {
+  onFilterChange: function onFilterChange() {},
+  width: 'auto',
+  classes: {
+    selectClass: '',
+    headerClass: '',
+    inputClass: '',
+    selectedItemClass: '',
+    itemContainerClass: '',
+    listClass: ''
+  },
+  id: 'id',
+  label: 'label'
+};
+MultiSelect.propTypes = {
+  classes: _propTypes["default"].object,
+  placeholder: _propTypes["default"].string,
+  id: _propTypes["default"].string,
+  label: _propTypes["default"].string,
+  selected: _propTypes["default"].array,
+  setSelected: _propTypes["default"].func,
+  items: _propTypes["default"].array,
+  width: _propTypes["default"].string
+};
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+if (false) { var throwOnDirectAccess, ReactIs; } else {
+  // By explicitly using `prop-types` you are opting into new production behavior.
+  // http://fb.me/prop-types-in-prod
+  module.exports = __webpack_require__(4)();
+}
+
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+var ReactPropTypesSecret = __webpack_require__(5);
+
+function emptyFunction() {}
+function emptyFunctionWithReset() {}
+emptyFunctionWithReset.resetWarningCache = emptyFunction;
+
+module.exports = function() {
+  function shim(props, propName, componentName, location, propFullName, secret) {
+    if (secret === ReactPropTypesSecret) {
+      // It is still safe when called from React.
+      return;
+    }
+    var err = new Error(
+      'Calling PropTypes validators directly is not supported by the `prop-types` package. ' +
+      'Use PropTypes.checkPropTypes() to call them. ' +
+      'Read more at http://fb.me/use-check-prop-types'
+    );
+    err.name = 'Invariant Violation';
+    throw err;
+  };
+  shim.isRequired = shim;
+  function getShim() {
+    return shim;
+  };
+  // Important!
+  // Keep this list in sync with production version in `./factoryWithTypeCheckers.js`.
+  var ReactPropTypes = {
+    array: shim,
+    bool: shim,
+    func: shim,
+    number: shim,
+    object: shim,
+    string: shim,
+    symbol: shim,
+
+    any: shim,
+    arrayOf: getShim,
+    element: shim,
+    elementType: shim,
+    instanceOf: getShim,
+    node: shim,
+    objectOf: getShim,
+    oneOf: getShim,
+    oneOfType: getShim,
+    shape: getShim,
+    exact: getShim,
+
+    checkPropTypes: emptyFunctionWithReset,
+    resetWarningCache: emptyFunction
+  };
+
+  ReactPropTypes.PropTypes = ReactPropTypes;
+
+  return ReactPropTypes;
+};
+
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
+
+module.exports = ReactPropTypesSecret;
+
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.DownArrow = void 0;
+
+var _react = _interopRequireDefault(__webpack_require__(0));
+
+var _jsxFileName = "/home/darkcode/Projects/libraries/multi-select/source/MultiSelect/Shapes.js";
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+var DownArrow = function DownArrow(_ref) {
+  var className = _ref.className,
+      handleClick = _ref.handleClick;
+  return /*#__PURE__*/_react["default"].createElement("svg", {
+    className: className,
+    height: "0.9em",
+    version: "1.1",
+    viewBox: "0 0 8.4666665 8.4666669",
+    onClick: handleClick,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 4,
+      columnNumber: 3
+    }
+  }, /*#__PURE__*/_react["default"].createElement("g", {
+    transform: "translate(0 -288.53)",
+    fill: "none",
+    stroke: "#000",
+    strokeLinecap: "round",
+    strokeWidth: ".8176",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 5,
+      columnNumber: 5
+    }
+  }, /*#__PURE__*/_react["default"].createElement("path", {
+    d: "m0.61405 290.96 3.6193 3.6193",
+    stroke: "currentColor",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 6,
+      columnNumber: 7
+    }
+  }), /*#__PURE__*/_react["default"].createElement("path", {
+    d: "m7.8526 290.96-3.6193 3.6193",
+    stroke: "currentColor",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 7,
+      columnNumber: 7
+    }
+  })));
+};
+
+exports.DownArrow = DownArrow;
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = toTitleCase;
+
+function toTitleCase(str) {
+  return str.charAt(0).toUpperCase() + str.replace(/_/g, ' ').substring(1);
+}
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+module.exports = {"select":"_1f4KvlI1rx-3baxCJxqkWf","header":"AyDHj_iVdxs0mV-lHKWwA","down-arrow":"_3YOM1QA0cp8qmPwcgusaIe","downArrow":"_3YOM1QA0cp8qmPwcgusaIe","selected-item":"_2kjKYYLAoYcqBeXW2ngScO","selectedItem":"_2kjKYYLAoYcqBeXW2ngScO","cmd-remove-item":"_3kJbI7XA_P_g3O24jFiNyq","cmdRemoveItem":"_3kJbI7XA_P_g3O24jFiNyq","txt-filter":"_3-iNI-D3qzFqDZc8qKKJbj","txtFilter":"_3-iNI-D3qzFqDZc8qKKJbj","item-container":"_1b9KRus8cWq9wzEZQ5QNXj","itemContainer":"_1b9KRus8cWq9wzEZQ5QNXj","item-list":"_1ROtNr2H5R9o-Mq1PLt_4I","itemList":"_1ROtNr2H5R9o-Mq1PLt_4I","placeholder-item":"twr-XfhZq0GqP5ti3Bg2A","placeholderItem":"twr-XfhZq0GqP5ti3Bg2A"};
+
+/***/ })
+/******/ ]);
+});

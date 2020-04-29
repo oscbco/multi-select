@@ -1,6 +1,6 @@
 var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 var MiniCssExtractPlugin = require('mini-css-extract-plugin');
-var UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+var TerserPlugin = require('terser-webpack-plugin');
 var webpack = require('webpack');
 var path = require('path');
 
@@ -36,7 +36,12 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           {
-            loader: 'style-loader'
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              // you can specify a publicPath here
+              // by default it use publicPath in webpackOptions.output
+              publicPath: '../'
+            }
           },
           {
             loader: 'css-loader',
@@ -73,6 +78,7 @@ module.exports = {
   },
   optimization: {
     minimize: false,
+    minimizer: [new TerserPlugin()],
     splitChunks: {
       cacheGroups: {
         commons: {
@@ -86,9 +92,6 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production')
-    }),
-    new UglifyJSPlugin({
-      sourceMap: false
     }),
     new MiniCssExtractPlugin({
       filename: '[name].css',
