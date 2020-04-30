@@ -3,13 +3,13 @@ import React, { useState } from 'react';
 import MultiSelect from '../MultiSelect/MultiSelect';
 import './_App.scss';
 
-import cssBasic from './sass/basic.scss';
-import cssOrange from './sass/orange.scss';
-import cssDark from './sass/dark.scss';
-import cssBlue from './sass/blue.scss';
-import cssGreen from './sass/green.scss';
-import cssOrangeWithSeparators from './sass/orangeWithSeparators.scss';
-import cssOrangeWithDashes from './sass/orangeWithDashes.scss';
+import cssBasic from './themes/basic.scss';
+import cssOrange from './themes/orange.scss';
+import cssDark from './themes/dark.scss';
+import cssBlue from './themes/blue.scss';
+import cssGreen from './themes/green.scss';
+import cssOrangeWithSeparators from './themes/orangeWithSeparators.scss';
+import cssOrangeWithDashes from './themes/orangeWithDashes.scss';
 
 import { programmingLanguages, programmingLanguagesNoColor } from './data';
 
@@ -28,7 +28,14 @@ export default function App () {
           </span>
         </span>
         <input type='text' defaultValue='Sample text' className={cssBasic.txtControl} />
-        <MultiSelect id='id' label='label' items={programmingLanguages} width='400px' classes={cssBasic} setSelected={setTags} selected={tags} placeholder='Select tags' />
+        <MultiSelect id='id'
+          label='label'
+          items={programmingLanguages}
+          width='400px'
+          classes={cssBasic}
+          setSelected={setTags}
+          selected={tags}
+          placeholder='Select tags' />
       </div>
 
       <h3>Dark</h3>
