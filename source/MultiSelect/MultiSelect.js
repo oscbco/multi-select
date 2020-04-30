@@ -22,8 +22,8 @@ export default function MultiSelect (props) {
 
   const openSelect = (event) => {
     event.preventDefault();
-    // Ignore clicks from cmdRemoveItem
-    if (event.target.id === css.cmdRemoveItem) {
+    // Ignore clicks from removeItem
+    if (event.target.dataset.id === css.removeItem) {
       return;
     }
     // Clicks on txtFilter always open the select
@@ -65,9 +65,9 @@ export default function MultiSelect (props) {
   }).map(function (item, index) {
     const label = item[props.label] ? item[props.label] : toTitleCase(item[props.id]);
     const check = props.selected.includes(item[props.id]) ? '✓' : '';
-    const activeItem = index === active ? props.classes.activeItem : '';
+    const activeItem = index === active ? props.classes.activeItem + ' oscbco-multi-active-item' : '';
     return (
-      <div className={css.item + ' ' + activeItem + ' ' + props.classes.item} key={item[props.id]} data-value={item[props.id]} style={{ color: item.menuColor, backgroundColor: item.menuBackground }}>
+      <div className={css.item + ' ' + activeItem + ' ' + props.classes.item + ' oscbco-multi-select-item'} key={item[props.id]} data-value={item[props.id]} style={{ color: item.menuColor, backgroundColor: item.menuBackground }}>
         {label} <span data-value={item[props.id]}>{check}</span>
       </div>
     );
@@ -80,9 +80,9 @@ export default function MultiSelect (props) {
     });
     const label = item[props.label] ? item[props.label] : toTitleCase(item[props.id]);
     return (
-      <div className={css.selectedItem + ' ' + props.classes.selectedItem} key={item[props.id]} style={{ color: item.selectedColor, backgroundColor: item.selectedBackground }}>
+      <div className={css.selectedItem + ' ' + props.classes.selectedItem + ' oscbco-multi-select-selected-item'} key={item[props.id]} style={{ color: item.selectedColor, backgroundColor: item.selectedBackground }}>
         {label}
-        <span id={css.cmdRemoveItem} className={css.cmdRemoveItem + ' ' + props.classes.cmdRemoveItem} data-value={item[props.id]}>×</span>
+        <span data-id={css.removeItem} className={css.removeItem + ' ' + props.classes.removeItem + ' oscbco-multi-select-remove-item'} data-value={item[props.id]}>×</span>
       </div>
     );
   });
@@ -94,25 +94,25 @@ export default function MultiSelect (props) {
   });
 
   return (
-    <div tabIndex={-1} className={css.select + ' ' + props.classes.select} onFocus={() => setFocused(true)} onBlur={(event) => handleBlur(event)} onClick={selectItem} data-is-open={isOpen} style={{ width: props.width, zIndex: (focused ? '9999' : '1') }}>
-      <div className={css.header + ' ' + props.classes.header} onClick={openSelect}>
+    <div tabIndex={-1} className={css.select + ' ' + props.classes.select + ' oscbco-multi-select'} onFocus={() => setFocused(true)} onBlur={(event) => handleBlur(event)} onClick={selectItem} data-is-open={isOpen} style={{ width: props.width, zIndex: (focused ? '9999' : '1') }}>
+      <div className={css.header + ' ' + props.classes.header + ' oscbco-multi-select-header'} onClick={openSelect}>
         <div>
           <div>
             {selectedItems}
           </div>
-          <input placeholder={props.placeholder} data-open={isOpen} data-id={css.txtFilter} className={css.txtFilter + ' ' + props.classes.input} style={{ display: (empty ? 'inline-block' : 'none') }} type='text' onChange={handleFilterChange} value={filterText} />
+          <input placeholder={props.placeholder} data-open={isOpen} data-id={css.txtFilter} className={css.txtFilter + ' ' + props.classes.input + ' oscbco-multi-select-input'} style={{ display: (empty ? 'inline-block' : 'none') }} type='text' onChange={handleFilterChange} value={filterText} />
           {selectedItems.length === 0 ? <div className={css.selectedItem + ' ' + props.classes.selectedItem + ' ' + css.placeholderItem}>&nbsp;</div> : null}
         </div>
 
         <div>
-          <DownArrow id={css.downArrow} className={css.downArrow + ' ' + props.classes.downArrow} />
+          <DownArrow id={css.downArrow} className={css.downArrow + ' ' + props.classes.downArrow + ' oscbco-multi-select-down-arrow'} />
         </div>
       </div>
 
-      <div className={css.itemContainer + ' ' + props.classes.itemContainer} data-is-open={isOpen} style={{ height: (isOpen === true ? height : '0') }}>
+      <div className={css.itemContainer + ' ' + props.classes.itemContainer + ' oscbco-multi-select-item-container'} data-is-open={isOpen} style={{ height: (isOpen === true ? height : '0') }}>
         <div ref={itemListRef}>
-          <input placeholder={props.placeholder} data-open={isOpen} data-id={css.txtFilter} className={css.txtFilter + ' ' + props.classes.input} style={{ display: (!empty ? 'inline-block' : 'none') }} type='text' onChange={handleFilterChange} value={filterText} />
-          <div className={css.itemList + ' ' + props.classes.list}>
+          <input placeholder={props.placeholder} data-open={isOpen} data-id={css.txtFilter} className={css.txtFilter + ' ' + props.classes.input + ' oscbco-multi-select-input'} style={{ display: (!empty ? 'inline-block' : 'none') }} type='text' onChange={handleFilterChange} value={filterText} />
+          <div className={css.itemList + ' ' + props.classes.list + ' oscbco-multi-select-list'}>
             {items}
           </div>
         </div>
@@ -133,7 +133,9 @@ MultiSelect.defaultProps = {
     listClass: ''
   },
   id: 'id',
-  label: 'label'
+  label: 'label',
+  items: [],
+  selected: []
 };
 
 MultiSelect.propTypes = {
