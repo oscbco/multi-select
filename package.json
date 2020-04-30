@@ -14,7 +14,7 @@
   "files": [
     "index.js",
     "main.css",
-    "LICENSE.md"
+    "LICENSE"
   ],
   "jest": {
     "moduleNameMapper": {
